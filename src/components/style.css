@@ -1,0 +1,12 @@
+.sideBar {
+    @apply p-2 w-[15%] inset-y-0 fixed left-0 flex flex-col h-full
+}
+
+.sideBarLinks {
+@apply flex flex-col h-[70%]
+}
+.sideBarLinks a:hover {
+    background-color: rgb(102, 127, 216);
+    -webkit-transition: background-color 1s ease;
+    @apply  text-white 
+}
