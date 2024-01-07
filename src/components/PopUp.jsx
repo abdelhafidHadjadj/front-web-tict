@@ -12,16 +12,25 @@ const PopUp = ({
   getProbX,
   getProbY,
   getProbXY,
+  openFirstForm,
+  openSecForm,
+  openThirForm,
+  setOpenFirstForm,
+  setOpenSecForm,
+  setOpenThirForm,
 }) => {
   console.log(calculationType);
 
-  const [openNextForm, setOpenNextForm] = useState(false);
-
   return (
-    <div className="absolute ml-20 bottom-20 rounded-md bg-[--second-color] z-10 border w-fit shadow-lg shadow-cyan-500/50 px-20 py-10">
+    <div className="absolute h-fit bottom-0 left-[20%] right-[20%] top-[40%]  rounded-md bg-[--second-color] z-10 border w-fit shadow-lg shadow-cyan-500/50 px-20 py-10">
       <span
         className="opacity-50 hover:opacity-70 cursor-pointer flex justify-end mt-[-30px] mr-[-60px]"
-        onClick={() => setOpen(false)}
+        onClick={() => {
+          setOpen(false);
+          setOpenFirstForm(true);
+          setOpenSecForm(false);
+          setOpenThirForm(false);
+        }}
       >
         X
       </span>
@@ -33,43 +42,58 @@ const PopUp = ({
         <ProbForm2D n={n} m={m} getProba2D={getProba2D} />
       ) : calculationType === "ixy" ? (
         <div>
-          <ProbaForm
-            nbrProb={n}
-            calculationType={calculationType}
-            setOpenNextForm={setOpenNextForm}
-            className={"form1"}
-            getProbX={getProbX}
-          />
-
-          <ProbaForm
-            nbrProb={m}
-            type="y"
-            getProbY={getProbY}
-            className={"form2"}
-            calculationType={calculationType}
-            setOpenNextForm={setOpenNextForm}
-          />
-          <ProbForm2D
-            n={n}
-            m={m}
-            calculationType={calculationType}
-            getProbXY={getProbXY}
-          />
+          {openFirstForm && (
+            <ProbaForm
+              nbrProb={n}
+              calculationType={calculationType}
+              className={"form1"}
+              getProbX={getProbX}
+              openFirstForm={openFirstForm}
+              openSecForm={openSecForm}
+              setOpenFirstForm={setOpenFirstForm}
+              setOpenSecForm={setOpenSecForm}
+            />
+          )}
+          {openSecForm && (
+            <ProbaForm
+              nbrProb={m}
+              type="y"
+              getProbY={getProbY}
+              className={"form2"}
+              calculationType={calculationType}
+              openSecForm={openSecForm}
+              setOpenSecForm={setOpenSecForm}
+              openThirForm={openThirForm}
+              setOpenThirForm={setOpenThirForm}
+            />
+          )}
+          {openThirForm && (
+            <ProbForm2D
+              n={n}
+              m={m}
+              calculationType={calculationType}
+              getProbXY={getProbXY}
+            />
+          )}
         </div>
       ) : calculationType === "hx_y" ? (
         <div>
-          <ProbaForm
-            nbrProb={m}
-            type="y"
-            calculationType={calculationType}
-            getProbY={getProbY}
-          />
-          <ProbForm2D
-            n={n}
-            m={m}
-            calculationType={calculationType}
-            getProbXY={getProbXY}
-          />
+          {openFirstForm && (
+            <ProbaForm
+              nbrProb={m}
+              type="y"
+              calculationType={calculationType}
+              getProbY={getProbY}
+            />
+          )}
+          {openSecForm && (
+            <ProbForm2D
+              n={n}
+              m={m}
+              calculationType={calculationType}
+              getProbXY={getProbXY}
+            />
+          )}
         </div>
       ) : (
         <div>

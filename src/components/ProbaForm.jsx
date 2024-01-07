@@ -1,14 +1,19 @@
 import React from "react";
 import { useState } from "react";
+import "../App.css";
 const ProbaForm = ({
   nbrProb,
   getProba,
   type = "x",
   calculationType,
-  handleDisplay,
   className,
   getProbX,
   getProbY,
+  setOpenFirstForm,
+  openFirstForm,
+  setOpenSecForm,
+  openSecForm,
+  setOpenThirForm,
 }) => {
   const inputs = [];
   const [isSumEqualToOne, setIsSumEqualToOne] = useState(true);
@@ -68,13 +73,30 @@ const ProbaForm = ({
         {calculationType == "ixy" ||
         calculationType == "hx_y" ||
         calculationType == "hy_x" ? (
-          <button disabled={!isSumEqualToOne} type="submit">
-            Next
-          </button>
+          <input
+            type="submit"
+            value={`${!isSumEqualToOne ? "Sum must be equal to 1" : "Next >"}`}
+            className={`${
+              !isSumEqualToOne
+                ? "bg-red-600 text-white border-red-600 hover:bg-red-60"
+                : "hover:bg-blue-600 border-[var(--primary-color)] cursor-pointer"
+            }`}
+            disabled={!isSumEqualToOne}
+          />
         ) : (
-          <input type="submit" value={"Calculer"} disabled={!isSumEqualToOne} />
+          <input
+            type="submit"
+            value={`${
+              !isSumEqualToOne ? "Sum must be equal to 1" : "Calculer"
+            }`}
+            className={`${
+              !isSumEqualToOne
+                ? "bg-red-600 text-white border-red-600 hover:bg-red-60"
+                : "hover:bg-blue-600 border-[var(--primary-color)] cursor-pointer"
+            }`}
+            disabled={!isSumEqualToOne}
+          />
         )}
-        {!isSumEqualToOne && <p>Sum must be equal to 1</p>}
       </form>
     </div>
   );

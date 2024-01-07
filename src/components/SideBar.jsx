@@ -13,16 +13,7 @@ const SideBar = () => {
               Me
             </Link>
             <Link className="border px-2 py-4" to="/entropie">
-              Entropie
-            </Link>
-            <Link className="border px-2 py-4" to="/">
-              Prefix code
-            </Link>
-            <Link className="border px-2 py-4" to="/huffman">
-              Huffman
-            </Link>
-            <Link className="border px-2 py-4" to="/shannon-fano">
-              Shannon-Fano
+              Big TP 1
             </Link>
           </div>
         </div>

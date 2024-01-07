@@ -60,8 +60,16 @@ const ProbForm2D = ({ n, m, getProba2D, calculationType, getProbXY }) => {
           Insérez les probabilités
         </h1>
         <div>{inputs}</div>
-        <input type="submit" value={"Calculer"} disabled={!isSumEqualToOne} />
-        {!isSumEqualToOne && <p>Sum must be equal to 1</p>}
+        <input
+          type="submit"
+          value={`${!isSumEqualToOne ? "Sum must be equal to 1" : "Calculer"}`}
+          className={`${
+            !isSumEqualToOne
+              ? "bg-red-600 text-white border-red-600 hover:bg-red-60"
+              : "hover:bg-blue-600 border-[var(--primary-color)] cursor-pointer"
+          }`}
+          disabled={!isSumEqualToOne}
+        />
       </form>
     </div>
   );

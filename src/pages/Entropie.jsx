@@ -13,7 +13,9 @@ const Entropie = () => {
   const [probXY, setProbXY] = useState(null);
   const [dataInputs, setDataInputs] = useState({});
   const [calculationType, setCalculationType] = useState(null);
-
+  const [openFirstForm, setOpenFirstForm] = useState(true);
+  const [openSecForm, setOpenSecForm] = useState(false);
+  const [openThirForm, setOpenThirForm] = useState(false);
   const getProba = async (e) => {
     e.preventDefault();
     let arr = [];
@@ -23,7 +25,7 @@ const Entropie = () => {
 
     if (arr && calculationType) {
       await sendData(
-        `http://127.0.0.1:5000/calcul-${calculationType.toLowerCase()}`,
+        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         arr
       );
     }
@@ -43,13 +45,17 @@ const Entropie = () => {
 
     if (matrix && calculationType) {
       await sendData(
-        `http://127.0.0.1:5000/calcul-${calculationType.toLowerCase()}`,
+        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         matrix
       );
     }
   };
 
   function getProbX(e) {
+    if (openFirstForm) {
+      setOpenSecForm(true);
+      setOpenFirstForm(false);
+    }
     e.preventDefault();
     let arr = [];
     for (let i = 0; i < srcLengthX; i++) {
@@ -58,6 +64,14 @@ const Entropie = () => {
     return setProbX(arr);
   }
   function getProbY(e) {
+    if (openSecForm && calculationType == "ixy") {
+      setOpenSecForm(false);
+      setOpenThirForm(true);
+    }
+    if (openFirstForm && calculationType == "hx_y") {
+      setOpenFirstForm(false);
+      setOpenSecForm(true);
+    }
     e.preventDefault();
     let arr = [];
     for (let i = 0; i < srcLengthY; i++) {
@@ -84,19 +98,19 @@ const Entropie = () => {
     console.log({ probY, matrix });
     if (calculationType == "hx_y") {
       sendData(
-        `http://127.0.0.1:5000/calcul-${calculationType.toLowerCase()}`,
+        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probY: probY, probXY: matrix }
       );
     }
     if (calculationType == "hy_x") {
       sendData(
-        `http://127.0.0.1:5000/calcul-${calculationType.toLowerCase()}`,
+        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probX: probX, probXY: matrix }
       );
     }
     if (calculationType == "ixy") {
       sendData(
-        `http://127.0.0.1:5000/calcul-${calculationType.toLowerCase()}`,
+        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probX: probX, probY: probY, probXY: matrix }
       );
     }
@@ -250,6 +264,12 @@ const Entropie = () => {
           getProbX={getProbX}
           getProbY={getProbY}
           getProbXY={getProbXY}
+          openFirstForm={openFirstForm}
+          setOpenFirstForm={setOpenFirstForm}
+          openSecForm={openSecForm}
+          setOpenSecForm={setOpenSecForm}
+          openThirForm={openThirForm}
+          setOpenThirForm={setOpenThirForm}
         />
       )}
       <div className="flex gap-4">

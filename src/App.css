@@ -11,9 +11,9 @@ input[type="number"] {
     @apply text-[var(--primary-color)] outline-none bg-transparent border-2 p-2 border-blue-600 rounded-full
 }
 input[type="submit"] {
-    @apply bg-transparent border-2 border-[var(--primary-color)] px-4 py-2 rounded-full 
+    @apply w-full  border-2  px-4 py-2 rounded-full 
 }
-input[type="submit"]:hover {
+/* input[type="submit"]:hover {
     @apply text-white bg-blue-600 border-2 border-blue-600 px-4 py-2
 }
-
+ */
