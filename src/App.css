@@ -20,5 +20,5 @@ input[type="submit"] {
 
  nav button:hover {
     transition: 450ms;
-    @apply bg-[var(--primary-color)]
+    background-color: var(--primary-color);
 }
