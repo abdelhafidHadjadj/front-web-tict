@@ -37,7 +37,11 @@ const PopUp = ({
       {calculationType === "hx" ||
       calculationType === "hy" ||
       calculationType === "ix" ? (
-        <ProbaForm nbrProb={srcLength} getProba={getProba} />
+        <ProbaForm
+          nbrProb={srcLength}
+          getProba={getProba}
+          type={calculationType == "hy" ? "y" : "x"}
+        />
       ) : calculationType === "hxy" ? (
         <ProbForm2D n={n} m={m} getProba2D={getProba2D} />
       ) : calculationType === "ixy" ? (
@@ -97,17 +101,21 @@ const PopUp = ({
         </div>
       ) : (
         <div>
-          <ProbaForm
-            nbrProb={n}
-            calculationType={calculationType}
-            getProbX={getProbX}
-          />
-          <ProbForm2D
-            n={n}
-            m={m}
-            calculationType={calculationType}
-            getProbXY={getProbXY}
-          />
+          {openFirstForm && (
+            <ProbaForm
+              nbrProb={n}
+              calculationType={calculationType}
+              getProbX={getProbX}
+            />
+          )}
+          {openSecForm && (
+            <ProbForm2D
+              n={n}
+              m={m}
+              calculationType={calculationType}
+              getProbXY={getProbXY}
+            />
+          )}
         </div>
       )}
     </div>
