@@ -154,7 +154,7 @@ const Entropie = () => {
       </div>
       <nav className="flex justify-between my-6">
         <button
-          className="border px-10 py-3"
+          className="border rounded-sm px-10 py-3"
           onClick={() => {
             if (srcLengthX) {
               setOpen(!open);

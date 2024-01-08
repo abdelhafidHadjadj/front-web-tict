@@ -18,7 +18,10 @@ input[type="submit"] {
 }
  */
 
+ 
+
  nav button:hover {
     transition: 450ms;
+    color: var(--second-color);
     background-color: var(--primary-color);
 }
