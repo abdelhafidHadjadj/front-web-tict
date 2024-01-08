@@ -25,7 +25,7 @@ const Entropie = () => {
 
     if (arr && calculationType) {
       await sendData(
-        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
+        `https://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         arr
       );
     }
@@ -45,7 +45,7 @@ const Entropie = () => {
 
     if (matrix && calculationType) {
       await sendData(
-        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
+        `https://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         matrix
       );
     }
@@ -98,19 +98,19 @@ const Entropie = () => {
     console.log({ probY, matrix });
     if (calculationType == "hx_y") {
       sendData(
-        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
+        `https://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probY: probY, probXY: matrix }
       );
     }
     if (calculationType == "hy_x") {
       sendData(
-        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
+        `https://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probX: probX, probXY: matrix }
       );
     }
     if (calculationType == "ixy") {
       sendData(
-        `http://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
+        `https://abdelhafiddev.pythonanywhere.com/calcul-${calculationType.toLowerCase()}`,
         { probX: probX, probY: probY, probXY: matrix }
       );
     }
